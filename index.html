@@ -262,11 +262,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-test1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-关于Promise的一些小知识本篇主要探讨promise.then()的一些情况" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/10/22/test1/" class="article-date">
-      <time datetime="2020-10-22T08:24:55.520Z" itemprop="datePublished">2020-10-22</time>
+      <a href="/2020/10/22/%E5%85%B3%E4%BA%8EPromise%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E6%9C%AC%E7%AF%87%E4%B8%BB%E8%A6%81%E6%8E%A2%E8%AE%A8promise.then()%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%85%E5%86%B5/" class="article-date">
+      <time datetime="2020-10-22T11:08:49.915Z" itemprop="datePublished">2020-10-22</time>
 </a>
 
 
@@ -281,7 +281,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/22/test1/">test1</a>
+      <a class="article-title" href="/2020/10/22/%E5%85%B3%E4%BA%8EPromise%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%9F%A5%E8%AF%86%E6%9C%AC%E7%AF%87%E4%B8%BB%E8%A6%81%E6%8E%A2%E8%AE%A8promise.then()%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%85%E5%86%B5/">关于Promise的一些小知识本篇主要探讨promise.then()的一些情况</a>
     </h1>
   
 
@@ -291,13 +291,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>简单测试.</p>
-<h2 id="测试1"><a href="#测试1" class="headerlink" title="测试1"></a>测试1</h2><h3 id="111"><a href="#111" class="headerlink" title="111"></a>111</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aaa</span><br></pre></td></tr></table></figure>
+        <h2 id="话不多说先看代码-这里创建p1p2p3"><a href="#话不多说先看代码-这里创建p1p2p3" class="headerlink" title="话不多说先看代码,这里创建p1p2p3"></a>话不多说先看代码,这里创建p1p2p3</h2><h3 id="p3"><a href="#p3" class="headerlink" title="p3"></a>p3</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class <span class="built_in">test</span> &#123;</span><br><span class="line">    <span class="keyword">then</span>(resolve, reject) &#123;</span><br><span class="line">        console.log(<span class="string">&quot;p3&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var p3 = new <span class="built_in">test</span>()     </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="测试2"><a href="#测试2" class="headerlink" title="测试2"></a>测试2</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bbb</span><br></pre></td></tr></table></figure>
+<p>这里为class里的then方法，里面的参数固定为(resolve, reject);</p>
+<h3 id="p2"><a href="#p2" class="headerlink" title="p2"></a>p2</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var p2 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    resolve(<span class="string">&quot;bbb&quot;</span>)</span><br><span class="line">&#125;).<span class="keyword">then</span>((res) =&gt; &#123;</span><br><span class="line">    console.log(<span class="string">&quot;p2&quot;</span>, res);</span><br><span class="line">    <span class="built_in">return</span> res</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<p>这里的p2是普通的一个Prmise，别急，主要是看p1</p>
+<h3 id="p1"><a href="#p1" class="headerlink" title="p1"></a>p1</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var p1 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    resolve(<span class="string">&quot;aaa&quot;</span>)</span><br><span class="line">&#125;).<span class="keyword">then</span>((res) =&gt; &#123;</span><br><span class="line">    console.log(<span class="string">&quot;then1&quot;</span>, res);</span><br><span class="line">    <span class="built_in">return</span> p2</span><br><span class="line">&#125;).<span class="keyword">then</span>((res2) =&gt; &#123;</span><br><span class="line">    console.log(<span class="string">&quot;then2&quot;</span>, res2);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>看p1，根据执行顺序，resolve()执行成功，调用then，此时输出then1,aaa,然后返回p2,此时再看p2代码，resolve()执行成功，调用then,输出p2,bbb，之后返回res,看回来p1,因为状态改变，所以执行第二个then,输出then2,bbb.(注意，因为p2返回值res将作为p1第二个then的参数，即res2，所以输出bbb)</p>
+<h3 id="当我们把p1的第一个then的返回值改成return-p3时，"><a href="#当我们把p1的第一个then的返回值改成return-p3时，" class="headerlink" title="当我们把p1的第一个then的返回值改成return p3时，"></a>当我们把p1的第一个then的返回值改成return p3时，</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var p1 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    resolve(<span class="string">&quot;aaa&quot;</span>)</span><br><span class="line">&#125;).<span class="keyword">then</span>((res) =&gt; &#123;</span><br><span class="line">    console.log(<span class="string">&quot;then1&quot;</span>, res);</span><br><span class="line">    <span class="built_in">return</span> p3</span><br><span class="line">&#125;).<span class="keyword">then</span>((res2) =&gt; &#123;</span><br><span class="line">    console.log(<span class="string">&quot;then2&quot;</span>, res2);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>此时，前面不变，输出then1，aaa后，返回p3,即输出p3，但是此时第二个then并不会执行，(即使在p3里的then加上 return 1也不行，大家可以尝试一下)，原因则是因为此时的p3并没有改变p1状态，我们在p1第一个then里面可以consolo.dir(p1),则会显示状态为pending，而return p2的时候是fulfilled，因此可以得出结论：class里的then与promise里的then不同，不会改变状态，如果要想执行p1的第二个then，则需要在p3里面改变状态，即resolve(),当然需要返回是成功状态。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class <span class="built_in">test</span> &#123;</span><br><span class="line">    <span class="keyword">then</span>(resolve, reject) &#123;</span><br><span class="line">        console.log(<span class="string">&quot;p3&quot;</span>)</span><br><span class="line">        resolve(<span class="string">&quot;ccc&quot;</span>)；</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var p3 = new <span class="built_in">test</span>()  </span><br></pre></td></tr></table></figure>
+
+<p>这时，再执行p1，会依次输出then1 aaa,p2 bbb, p3,then2 ccc</p>
 
       
     </div>
